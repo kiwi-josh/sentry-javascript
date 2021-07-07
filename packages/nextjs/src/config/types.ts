@@ -56,14 +56,10 @@ export type WebpackEntryProperty = EntryPropertyObject | EntryPropertyFunction;
 // object containing either of those, along with other configuration options. In that third case, the entry point(s) are
 // listed under the key `import`.
 export type EntryPropertyObject = {
-  [key: string]:
-    | string
-    | Array<string>
-    // only in webpack 5
-    | EntryPointObject;
+  [key: string]: EntryPointValue;
 };
 
 export type EntryPropertyFunction = () => Promise<EntryPropertyObject>;
 
 // An object with options for a single entry point, potentially one of many in the webpack `entry` property
-export type EntryPointObject = { import: string | Array<string> };
+export type EntryPointValue = string | Array<string> | { import: string | Array<string> };
